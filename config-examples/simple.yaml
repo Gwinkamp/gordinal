@@ -1,0 +1,12 @@
+hooks:
+  - name: simple
+    keys:
+      - ctrl
+      - shift
+      - 1
+    command: echo
+    args:
+      - Hello world
+logging:
+  level: debug
+  output: stdout
