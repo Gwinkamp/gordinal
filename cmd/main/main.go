@@ -14,7 +14,8 @@ func main() {
 	cfg := config.MustReadFromFlag()
 	logger := config.MustConfigureLogging(cfg.Logging)
 
-	g := gordinal.New(logger)
+	g := gordinal.New()
+	g.SetLoger(logger)
 	registerHooks(g, cfg.Hooks)
 	g.RegisterDefaultExit()
 
@@ -34,7 +35,12 @@ func registerHooks(g *gordinal.Gordinal, hooks []config.Hook) {
 		g.Register(
 			hook.Name,
 			hook.Keys,
-			exec.Command(hook.Command, hook.Args...).Start,
+			func() error {
+				if err := exec.Command(hook.Command, hook.Args...).Run(); err != nil {
+					return err
+				}
+				return nil
+			},
 		)
 	}
 }

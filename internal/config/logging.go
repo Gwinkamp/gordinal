@@ -34,3 +34,13 @@ func MustConfigureLogging(logging Logging) *slog.Logger {
 	handler := slog.NewTextHandler(output, &slog.HandlerOptions{Level: logLevel})
 	return slog.New(handler)
 }
+
+func CreateDefaultLogger() *slog.Logger {
+	logHandler := slog.NewTextHandler(
+		os.Stdout,
+		&slog.HandlerOptions{
+			Level: slog.LevelDebug,
+		},
+	)
+	return slog.New(logHandler)
+}

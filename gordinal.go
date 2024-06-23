@@ -6,6 +6,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Gwinkamp/gordinal/internal/config"
 	gohook "github.com/robotn/gohook"
 )
 
@@ -15,11 +16,16 @@ type Gordinal struct {
 }
 
 // New creates new Gordinal instance
-func New(log *slog.Logger) *Gordinal {
+func New() *Gordinal {
 	return &Gordinal{
-		log: log,
+		log: config.CreateDefaultLogger(),
 		ch:  nil,
 	}
+}
+
+// SetLoger sets logger for Gordinal instance
+func (g *Gordinal) SetLoger(log *slog.Logger) {
+	g.log = log
 }
 
 // Register registers function hot key hook

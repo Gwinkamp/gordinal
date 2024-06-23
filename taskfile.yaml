@@ -1,0 +1,14 @@
+version: 3
+
+vars:
+  outputExecFilename: '{{if eq OS "windows"}}gordinal.exe{{else}}gordinal.so{{end}}'
+
+tasks:
+  build:
+    desc: build project and create exec file
+    cmd: go build -o ./{{.outputExecFilename}} ./cmd/main/main.go
+  run:
+    desc: run gordinal
+    cmd: go run ./cmd/main/main.go --path {{.pathToCfg}}
+    required:
+      - pathToCfg
