@@ -1,0 +1,10 @@
+[Unit]
+Description=Module to execute various commands by pressing hotkeys
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/gordinal --path /etc/gordinal-cfg.yaml
+
+[Install]
+WantedBy=default.target

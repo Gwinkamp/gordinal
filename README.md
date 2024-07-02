@@ -2,15 +2,63 @@
 
 The module allows you to execute various commands by pressing hotkeys.
 
-# Install
+## Requirements
+
+#### For All:
+
+* [Golang](https://go.dev/)
+* [GCC](https://gcc.gnu.org/)
+
+#### For MacOS:
+
+* Xcode Command Line Tools
+
+```shell
+xcode-select --install
+```
+
+#### For Windows:
+
+* [MinGW](https://sourceforge.net/projects/mingw-w64/files)
+
+> Download the Mingw, then set system environment variables `C:\mingw64\bin` to the Path.  
+> [Set environment variables to run GCC from command line.](https://www.youtube.com/results?search_query=Set+environment+variables+to+run+GCC+from+command+line)
+
+#### For Linux:
+
+Ubuntu:
+
+```shell
+sudo apt install \
+  gcc \
+  libc6-dev \
+  xcb \
+  libxcb-xkb-dev \
+  x11-xkb-utils \
+  libx11-xcb-dev \
+  libxkbcommon-x11-dev \
+  libxkbcommon-dev
+```
+
+Fedora:
+
+```shell
+sudo dnf install \
+  libXtst-devel \
+  libxkbcommon-devel \
+  libxkbcommon-x11-devel \
+  xorg-x11-xkb-utils-devel
+```
+
+## Install
 
 ```shell
 go get github.com/Gwinkamp/gordinal
 ```
 
-# Usage
+## Usage
 
-### From golang code:
+#### From golang code:
 
 ```go
 package main
@@ -37,7 +85,7 @@ func main() {
 }
 ```
 
-### From config file
+#### From config file
 
 You can describe the keyboard shortcuts and commands in the configuration file.  
 An example of such a file:  
